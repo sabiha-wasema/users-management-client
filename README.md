@@ -63,7 +63,7 @@ Before running this application, ensure you have the following installed:
    ```
 4. **Run the Application**
    ```
-   npm start
+      npm start
       # or
       yarn start
    ```
