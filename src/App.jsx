@@ -16,7 +16,28 @@ function App() {
           "https://raw.githubusercontent.com/Bit-Code-Technologies/mockapi/main/purchase.json"
         );
         const fetchedData = response.data;
-        setData(fetchedData);
+        // setData(fetchedData);
+        const processedReport = fetchedData?.map((item) => ({
+          productName: item?.product_name,
+          customerName: item?.name,
+          quantity: item?.purchase_quantity,
+          price: parseFloat(item?.product_price),
+          total: item?.purchase_quantity * parseFloat(item?.product_price),
+        }));
+
+        const grossQuantity = processedReport.reduce(
+          (acc, item) => acc + item.quantity,
+          0
+        );
+        const grossTotal = processedReport.reduce(
+          (acc, item) => acc + item.total,
+          0
+        );
+
+        setData({
+          items: processedReport,
+          gross: { quantity: grossQuantity, total: grossTotal },
+        });
       } catch (err) {
         setError("Error while fetching data");
         console.error(err);
@@ -37,10 +58,10 @@ function App() {
         </div>
       )}
       {error && <p className="text-red-500 text-center">{error}</p>}
-      {data?.length > 0 && (
+      {data?.items && data?.items?.length > 0 && (
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
-            <thead className="bg-gray-100 border-b border-gray-300">
+            <thead className="bg-gray-300 border-b border-gray-300">
               <tr>
                 <th className="py-3 px-4 text-left text-gray-700">
                   Product Name
@@ -54,20 +75,30 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              {data?.map((item, index) => (
-                <tr key={index} className="border-b border-gray-200">
-                  <td className="py-3 px-4">{item?.product_name}</td>
-                  <td className="py-3 px-4">{item?.name}</td>
-                  <td className="py-3 px-4">{item?.purchase_quantity}</td>
-                  <td className="py-3 px-4">${item?.product_price}</td>
-                  <td className="py-3 px-4">
-                    $
-                    {(
-                      item?.purchase_quantity * parseFloat(item?.product_price)
-                    ).toFixed(2)}
-                  </td>
+              {data.items.map((item, index) => (
+                <tr
+                  key={index}
+                  className={`border-b text-left ${
+                    index % 2 === 0 ? "bg-gray-100" : "bg-white"
+                  }`}
+                >
+                  <td className="py-2 px-4">{item?.productName}</td>
+                  <td className="py-2 px-4">{item?.customerName}</td>
+                  <td className="py-2 px-4">{item?.quantity}</td>
+                  <td className="py-2 px-4">${item?.price.toFixed(2)}</td>
+                  <td className="py-2 px-4">${item?.total.toFixed(2)}</td>
                 </tr>
               ))}
+              <tr>
+                <td colSpan="2" className="py-2 px-4 font-bold text-right">
+                  Gross Total:
+                </td>
+                <td className="py-2 px-4 font-bold">{data?.gross?.quantity}</td>
+                <td className="py-2 px-4"></td>
+                <td className="py-2 px-4 font-bold">
+                  ${data?.gross?.total.toFixed(2)}
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
