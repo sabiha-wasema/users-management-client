@@ -89,8 +89,8 @@ function App() {
                   <td className="py-2 px-4">{item?.productName}</td>
                   <td className="py-2 px-4">{item?.customerName}</td>
                   <td className="py-2 px-4">{item?.quantity}</td>
-                  <td className="py-2 px-4">${item?.price.toFixed(2)}</td>
-                  <td className="py-2 px-4">${item?.total.toFixed(2)}</td>
+                  <td className="py-2 px-4"><span className="font-semibold">$ </span>{item?.price.toFixed(2)}</td>
+                  <td className="py-2 px-4"><span className="font-semibold">$ </span>{item?.total.toFixed(2)}</td>
                 </tr>
               ))}
               <tr>
@@ -98,9 +98,9 @@ function App() {
                   Gross Total:
                 </td>
                 <td className="py-2 px-4 ">{data?.gross?.quantity}</td>
-                <td className="py-2 px-4 ">{data?.gross?.price.toFixed(2)}</td>
+                <td className="py-2 px-4 "><span className="font-semibold">$ </span>{data?.gross?.price.toFixed(2)}</td>
                 <td className="py-2 px-4 ">
-                  ${data?.gross?.total.toFixed(2)}
+                <span className="font-semibold">$ </span>{data?.gross?.total.toFixed(2)}
                 </td>
               </tr>
             </tbody>
