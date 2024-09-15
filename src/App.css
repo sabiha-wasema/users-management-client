@@ -1,0 +1,47 @@
+
+.custom-linear-gradient {
+    background: linear-gradient(135deg, #6e45e2, #88d3ce);
+  }
+  
+  .custom-radial-gradient {
+    background: radial-gradient(circle at center, #ff7e5f, #feb47b);
+  }
+  
+  .custom-conic-gradient {
+    background: conic-gradient(from 180deg, #f6d365, #fda085);
+  }
+
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1); 
+    border-left-color: #3498db; 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.2s linear infinite;
+    position: absolute;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .loading-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 100px;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+  
