@@ -26,17 +26,21 @@ function App() {
         }));
 
         const grossQuantity = processedReport.reduce(
-          (acc, item) => acc + item.quantity,
+          (acc, item) => acc + item?.quantity,
           0
         );
+        const totalPrice = processedReport.reduce(
+          (acc, item) => acc + item?.price,
+          0
+        )
         const grossTotal = processedReport.reduce(
-          (acc, item) => acc + item.total,
+          (acc, item) => acc + item?.total,
           0
         );
 
         setData({
           items: processedReport,
-          gross: { quantity: grossQuantity, total: grossTotal },
+          gross: { quantity: grossQuantity, total: grossTotal , price:totalPrice},
         });
       } catch (err) {
         setError("Error while fetching data");
@@ -93,9 +97,9 @@ function App() {
                 <td colSpan="2" className="py-2 px-4 font-bold text-right">
                   Gross Total:
                 </td>
-                <td className="py-2 px-4 font-bold">{data?.gross?.quantity}</td>
-                <td className="py-2 px-4"></td>
-                <td className="py-2 px-4 font-bold">
+                <td className="py-2 px-4 ">{data?.gross?.quantity}</td>
+                <td className="py-2 px-4 ">{data?.gross?.price.toFixed(2)}</td>
+                <td className="py-2 px-4 ">
                   ${data?.gross?.total.toFixed(2)}
                 </td>
               </tr>
