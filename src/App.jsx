@@ -16,7 +16,9 @@ function App() {
     setError(null);
     setTopPurchasers(null);
     try {
-      const response = await axios.get("http://localhost:5000/fetch-and-store");
+      const response = await axios.get(
+        "https://users-management-server-zeta.vercel.app/fetch-and-store"
+      );
       setReportData(response.data);
     } catch (err) {
       setError("Error fetching data from the server");
@@ -31,7 +33,9 @@ function App() {
     setError(null);
     setReportData(null);
     try {
-      const response = await axios.get("http://localhost:5000/top-purchasers");
+      const response = await axios.get(
+        "https://users-management-server-zeta.vercel.app/top-purchasers"
+      );
       setTopPurchasers(response.data.topPurchasers);
       setGrossTotal(response.data.grossTotal);
       setGrossQuantity(response.data.grossQuantity);
