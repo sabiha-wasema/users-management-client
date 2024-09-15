@@ -50,17 +50,20 @@ Before running this application, ensure you have the following installed:
    ```
 
 2. **Install Dependencies**
-   ```npm install
+      ```
+      npm install
       # or
       yarn install
    ```
 3. **Configure Environment Variables**
    - Create a .env file in the backend folder and add your MongoDB credentials:
-   ```USER_NAME=your-mongodb-username
+   ```
+      USER_NAME=your-mongodb-username
       USER_PASS=your-mongodb-password
    ```
 4. **Run the Application**
-   ```npm start
+   ```
+   npm start
       # or
       yarn start
    ```
