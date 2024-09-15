@@ -35,7 +35,7 @@ Before running this application, ensure you have the following installed:
 
 2. **Backend Code**
 
-   - Ensure you have the backend code running at `https://users-management-server-5xyip63pj-sabihawasemas-projects.vercel.app`.
+   - Ensure you have the backend code running at `https://users-management-server-zeta.vercel.app`.
    - The backend API endpoints used by this frontend are:
      - `/fetch-and-store` - Endpoint to fetch and store product data.
      - `/top-purchasers` - Endpoint to get the top purchasers and related statistics.
